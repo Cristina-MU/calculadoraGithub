@@ -19,6 +19,6 @@ jobs:
         docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_TOKEN }}
         
     - name: Build the Docker image
-      run: docker build ${{ secrets.DOCKER_USER }}/calculadora:latest .
+      run: docker build cristina27/calculadora:latest .
     - name: Subir imagen a docker Hub
-      run: docker push ${{ secrets.DOCKER_USER }}/calculadora:latest
+      run: docker push cristina27/calculadora:latest
