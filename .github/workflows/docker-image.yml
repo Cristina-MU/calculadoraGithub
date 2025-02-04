@@ -7,8 +7,27 @@ on:
     
 
 jobs:
+  tests: 
+        runs-on: ubuntu-24.04
 
+        steps:
+         - name: Hacer checkout
+           uses: actions/checkout@v4
+           
+           # instalar php
+         - name: Setup PHP with PECL extension
+           uses: shivammathur/setup-php@v2
+           with:
+             php-version: '8.4'
+             
+         - name: instalar dependencias
+           run: composer install
+            
+         - name: Ejecutar tests
+           run: vendor/bin/phpunit --testdox tests
+        
   construir:
+    needs: tests
       # construye esta imagen de ubuntu
     runs-on: ubuntu-24.04
       
